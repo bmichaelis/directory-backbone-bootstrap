@@ -28,7 +28,7 @@ directory.Router = Backbone.Router.extend({
     routes: {
         "":                 "home",
         "contact":          "contact",
-        "employees/:id":    "employeeDetails"
+        "players/:id":    "playerDetails"
     },
 
     initialize: function () {
@@ -63,15 +63,15 @@ directory.Router = Backbone.Router.extend({
         directory.shellView.selectMenuItem('contact-menu');
     },
 
-    employeeDetails: function (id) {
-        var employee = new directory.Employee({id: id});
+    playerDetails: function (id) {
+        var player = new directory.Player({id: id});
         var self = this;
-        employee.fetch({
+        player.fetch({
             success: function (data) {
                 console.log(data);
-                // Note that we could also 'recycle' the same instance of EmployeeFullView
+                // Note that we could also 'recycle' the same instance of PlayerFullView
                 // instead of creating new instances
-                self.$content.html(new directory.EmployeeView({model: data}).render().el);
+                self.$content.html(new directory.PlayerView({model: data}).render().el);
             }
         });
         directory.shellView.selectMenuItem();
@@ -80,7 +80,7 @@ directory.Router = Backbone.Router.extend({
 });
 
 $(document).on("ready", function () {
-    directory.loadTemplates(["HomeView", "ContactView", "ShellView", "EmployeeView", "EmployeeSummaryView", "EmployeeListItemView"],
+    directory.loadTemplates(["HomeView", "ContactView", "ShellView", "PlayerView", "PlayerSummaryView", "PlayerListItemView"],
         function () {
             directory.router = new directory.Router();
             Backbone.history.start();

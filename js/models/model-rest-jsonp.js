@@ -2,31 +2,31 @@
     If you are using the sample RESTFul services I published on GitHub, use the following URLs...
 
       - For the Node.js sample backend (available in https://github.com/ccoenraets/directory-rest-nodejs)
-        Use: http://localhost:3000/employees
+        Use: http://localhost:3000/players
 
       - For the PHP sample backend (available in https://github.com/ccoenraets/directory-rest-php)
-        Use: /directory-rest-php/employees
+        Use: /directory-rest-php/players
 
  */
 
-directory.Employee = Backbone.Model.extend({
+directory.Player = Backbone.Model.extend({
 
-    urlRoot:"http://localhost:3000/employees",
-//    urlRoot:"/directory-rest-php/employees",
+    urlRoot:"http://notonlycode-1.bitnamiapp.com:3000/players",
+//    urlRoot:"/directory-rest-php/players",
 
     initialize:function () {
-        this.reports = new directory.EmployeeCollection();
+        this.reports = new directory.PlayerCollection();
         this.reports.url = this.urlRoot + "/" + this.id + "/reports";
     }
 
 });
 
-directory.EmployeeCollection = Backbone.Collection.extend({
+directory.PlayerCollection = Backbone.Collection.extend({
 
-    model: directory.Employee,
+    model: directory.Player,
 
-    url:"http://localhost:3000/employees"
-//    url:"/directory-rest-php/employees"
+    url:"http://notonlycode-1.bitnamiapp.com:3000/players"
+//    url:"/directory-rest-php/players"
 
 });
 

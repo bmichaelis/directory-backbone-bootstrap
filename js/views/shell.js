@@ -1,8 +1,8 @@
 directory.ShellView = Backbone.View.extend({
 
     initialize: function () {
-        this.searchResults = new directory.EmployeeCollection();
-        this.searchresultsView = new directory.EmployeeListView({model: this.searchResults, className: 'dropdown-menu'});
+        this.searchResults = new directory.PlayerCollection();
+        this.searchresultsView = new directory.PlayerListView({model: this.searchResults, className: 'dropdown-menu'});
     },
 
     render: function () {
