@@ -1,4 +1,4 @@
-directory.EmployeeListView = Backbone.View.extend({
+directory.PlayerListView = Backbone.View.extend({
 
     tagName:'ul',
 
@@ -7,21 +7,21 @@ directory.EmployeeListView = Backbone.View.extend({
     initialize:function () {
         var self = this;
         this.model.on("reset", this.render, this);
-        this.model.on("add", function (employee) {
-            self.$el.append(new directory.EmployeeListItemView({model:employee}).render().el);
+        this.model.on("add", function (player) {
+            self.$el.append(new directory.PlayerListItemView({model:player}).render().el);
         });
     },
 
     render:function () {
         this.$el.empty();
-        _.each(this.model.models, function (employee) {
-            this.$el.append(new directory.EmployeeListItemView({model:employee}).render().el);
+        _.each(this.model.models, function (player) {
+            this.$el.append(new directory.PlayerListItemView({model:player}).render().el);
         }, this);
         return this;
     }
 });
 
-directory.EmployeeListItemView = Backbone.View.extend({
+directory.PlayerListItemView = Backbone.View.extend({
 
     tagName:"li",
 
