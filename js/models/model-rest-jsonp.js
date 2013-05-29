@@ -11,7 +11,7 @@
 
 directory.Player = Backbone.Model.extend({
 
-    urlRoot:"http://localhost:3000/players",
+    urlRoot:"http://notonlycode-1.bitnamiapp.com:3000/players",
 //    urlRoot:"/directory-rest-php/players",
 
     initialize:function () {
@@ -25,7 +25,7 @@ directory.PlayerCollection = Backbone.Collection.extend({
 
     model: directory.Player,
 
-    url:"http://localhost:3000/players"
+    url:"http://notonlycode-1.bitnamiapp.com:3000/players"
 //    url:"/directory-rest-php/players"
 
 });
