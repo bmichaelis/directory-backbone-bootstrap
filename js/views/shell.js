@@ -18,11 +18,18 @@ directory.ShellView = Backbone.View.extend({
 
     search: function (event) {
         var key = $('#searchText').val();
-        this.searchResults.fetch({reset: true, data: {name: key}});
-        var self = this;
-        setTimeout(function () {
-            $('.dropdown').addClass('open');
-        });
+        if(key != '') {
+            this.searchResults.fetch({reset: true, data: {name: key}});
+            var self = this;
+            setTimeout(function () {
+                $('.dropdown').addClass('open');
+            });
+        }
+        else {
+            setTimeout(function () {
+                $('.dropdown').removeClass('open');
+            });
+        }
     },
 
     onkeypress: function (event) {

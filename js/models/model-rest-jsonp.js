@@ -10,6 +10,7 @@
  */
 
 directory.Player = Backbone.Model.extend({
+    urlRoot:"http://notonlycode-1.bitnamiapp.com:3000/players",
 
     initialize:function () {
         this.reports = new directory.PlayerCollection();
