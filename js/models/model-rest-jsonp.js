@@ -11,9 +11,6 @@
 
 directory.Player = Backbone.Model.extend({
 
-    urlRoot:"http://notonlycode-1.bitnamiapp.com:3000/players",
-//    urlRoot:"/directory-rest-php/players",
-
     initialize:function () {
         this.reports = new directory.PlayerCollection();
         this.reports.url = this.urlRoot + "/" + this.id + "/reports";
@@ -26,9 +23,27 @@ directory.PlayerCollection = Backbone.Collection.extend({
     model: directory.Player,
 
     url:"http://notonlycode-1.bitnamiapp.com:3000/players"
-//    url:"/directory-rest-php/players"
 
 });
+
+directory.Message = Backbone.Model.extend({
+    
+/*
+    initialize:function ( msg ) {
+        this.messages = new directory.MessageCollection();
+        this.messages.url = this.urlRoot + "/team/" + msg;
+    }
+*/
+});
+
+directory.MessageCollection = Backbone.Collection.extend({
+
+    model: directory.Message,
+
+    urlRoot: "http://notonlycode-1.bitnamiapp.com:3000/voice/team",
+
+});
+
 
 var originalSync = Backbone.sync;
 Backbone.sync = function (method, model, options) {
