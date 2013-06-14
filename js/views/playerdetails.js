@@ -13,6 +13,21 @@ directory.PlayerView = Backbone.View.extend({
         $('#reports', this.el).append(new directory.PlayerListView({model:this.model.reports}).render().el);
 */
         return this;
+    },
+
+    events: {
+        "click .toggle": "playerToggle"
+     },
+
+    playerToggle: function () {
+        var player = this.model
+        var self = this;
+        console.log("Before Change:")
+        console.log(player.toJSON());
+        player.set({disabled: (player.attributes.disabled == true ? false : true)});
+        console.log("After Change:")
+        console.log(player.toJSON());
+        player.save();
     }
 });
 
@@ -23,6 +38,7 @@ directory.PlayerSummaryView = Backbone.View.extend({
     },
 
     render:function () {
+        this.model.attributes.thumbs = this.model.attributes.disabled == true ? 'icon-thumbs-down' : "icon-thumbs-up";
         this.$el.html(this.template(this.model.attributes));
         return this;
     }
