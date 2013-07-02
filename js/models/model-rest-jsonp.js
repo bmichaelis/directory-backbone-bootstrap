@@ -10,25 +10,27 @@
  */
 
 directory.Player = Backbone.Model.extend({
+    
     urlRoot:"http://notonlycode-1.bitnamiapp.com:3000/players",
+    //urlRoot:"http://localhost:3000/players",
 
-    initialize:function () {
-        this.reports = new directory.PlayerCollection();
-        this.reports.url = this.urlRoot + "/" + this.id + "/reports";
-    }
+   sync: function (method, model, options){
+       options.dataType = 'jsonp';
+       return Backbone.sync(method, model, options);
+   }
 
 });
 
-directory.PlayerCollection = Backbone.Collection.extend({
-
-    model: directory.Player,
-
-    url:"http://notonlycode-1.bitnamiapp.com:3000/players"
-
+directory.Team = Backbone.Collection.extend({
+    url:"http://notonlycode-1.bitnamiapp.com:3000/players",
+    //url:"http://localhost:3000/players",
+    model: directory.Player
 });
 
 directory.Message = Backbone.Model.extend({
     
+    urlRoot:"http://notonlycode-1.bitnamiapp.com:3000/voice/team",
+    //urlRoot: "http://localhost:3000/voice/team"
 /*
     initialize:function ( msg ) {
         this.messages = new directory.MessageCollection();
@@ -37,20 +39,16 @@ directory.Message = Backbone.Model.extend({
 */
 });
 
-directory.MessageCollection = Backbone.Collection.extend({
+directory.TeamMessages = Backbone.Collection.extend({
 
-    model: directory.Message,
-
-    urlRoot: "http://notonlycode-1.bitnamiapp.com:3000/voice/team",
+    model: directory.Message
 
 });
 
-
+/*
 var originalSync = Backbone.sync;
 Backbone.sync = function (method, model, options) {
-    if (method === "read") {
         options.dataType = "jsonp";
-        return originalSync.apply(Backbone, arguments);
-    }
-
+        return originalSync.sync(method, model, options);
 };
+*/

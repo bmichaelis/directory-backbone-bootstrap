@@ -26,9 +26,9 @@ var directory = {
 directory.Router = Backbone.Router.extend({
 
     routes: {
-        "":                 "home",
-        "contact":          "contact",
-        "players/:id":    "playerDetails"
+        "":                     "home",
+        "contact":              "contact",
+        "players/:id":         "playerDetails"
     },
 
     initialize: function () {
@@ -73,11 +73,11 @@ directory.Router = Backbone.Router.extend({
                 // instead of creating new instances
                 self.$content.html(new directory.PlayerView({model: data}).render().el);
             }
-        });
+        }, {dataType: 'jsonp'});
         directory.shellView.selectMenuItem();
-    }
+    },
 
-});
+ });
 
 $(document).on("ready", function () {
     directory.loadTemplates(["HomeView", "ContactView", "ShellView", "PlayerView", "PlayerSummaryView", "PlayerListItemView"],

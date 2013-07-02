@@ -19,7 +19,7 @@ directory.ShellView = Backbone.View.extend({
     search: function (event) {
         var key = $('#searchText').val();
         if(key != '') {
-            this.searchResults.fetch({reset: true, data: {name: key}});
+            this.searchResults.fetch({reset: true, data: {name: key}}, {dataType: 'jsonp'});
             var self = this;
             setTimeout(function () {
                 $('.dropdown').addClass('open');
