@@ -31,6 +31,5 @@
     <icon src="img/icon/ios/icon-72-2x.png" gap:platform="ios" width="144" height="144" />
 
     <gap:splash src="splash320x480.png" />
-    <gap:plugin name="GenericPush" />
     <access origin="*" />
 </widget>
